@@ -4,38 +4,36 @@ encoding_dictionary = {'a': '1', 'b': '2', 'c': '3', 'd': '4', 'e': '5', 'f': '6
 text = 'a sample sentence that compares basic encoding against lzw encoding and outputs the character count for both basic encoding and lzw encoding'
 
 text_list = text.split(' ')
-encoding_dictionary_keys = encoding_dictionary.keys()
 
 
 def basic_encoding(text):
     basic_encoding = ''
     for character in text:
-        if character in encoding_dictionary_keys:
+        if character in encoding_dictionary.keys():
             character = encoding_dictionary[character]
             basic_encoding += character
-    print('Basic encoding uses: ' + str(len(basic_encoding)) + ' characters')
-    print('Basic Encoding:' + basic_encoding)
+    print('Basic Encoding Uses: ' + str(len(basic_encoding)) + ' characters')
+    print('Basic Encoding Text:' + basic_encoding)
     return ''
 
 
 def LZW_encoding(text):
     encoded_text = []
-    last_value_used = int(list(encoding_dictionary.values())[-1])
+    last_value_used = int(encoding_dictionary[' '])
 
     for word in text_list:
-        if word in encoding_dictionary_keys:
+        if word in list(encoding_dictionary.keys()):
             encoded_text.append(encoding_dictionary[word])
         else:
             last_value_used += 1
             encoding_dictionary[word] = str(last_value_used)
             encoded_word = ''
             for character in word:
-                character = encoding_dictionary[character]
-                encoded_word += character
+                encoded_word += encoding_dictionary[character]
             encoded_text.append(encoded_word)
 
     LZW_encoded_text = encoding_dictionary[' '].join(encoded_text)
-    print('LZW encoding uses: ' + str(len(LZW_encoded_text)) + ' characters')
+    print('LZW Encoding Uses: ' + str(len(LZW_encoded_text)) + ' characters')
     print('LZW Encoded Text:' + LZW_encoded_text)
     return ''
 
