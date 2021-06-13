@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+
 encoding_dictionary = {'a': '1', 'b': '2', 'c': '3', 'd': '4', 'e': '5', 'f': '6', 'g': '7', 'h': '8', 'i': '9', 'j': '10', 'k': '11', 'l': '12',
                        'm': '13', 'n': '14', 'o': '15', 'p': '16', 'q': '17', 'r': '18', 's': '19', 't': '20', 'u': '21', 'v': '22', 'w': '23', 'x': '24', 'y': '25', 'z': '26', ' ': '27'}
 
-text = 'a sample sentence that compares basic encoding against lzw encoding and outputs the character count for both basic encoding and lzw encoding'
+text = 'a simple sentence that compares non-adaptive dictionary encoding against lzw encoding and outputs the character count for both basic encoding and lzw encoding'
 
 text_list = text.split(' ')
 
@@ -27,6 +29,7 @@ def LZW_encoding(text):
         else:
             last_value_used += 1
             encoding_dictionary[word] = str(last_value_used)
+
             encoded_word = ''
             for character in word:
                 encoded_word += encoding_dictionary[character]
